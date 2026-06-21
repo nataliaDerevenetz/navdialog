@@ -37,7 +37,9 @@ fun AgreementAlertDialogWithState(
         var isChecked by rememberSaveable { mutableStateOf(false) }
 
         BasicAlertDialog(
-            onDismissRequest = onDismiss,
+            onDismissRequest = {
+                openDialog.value = false
+                onDismiss()},
             properties = DialogProperties(usePlatformDefaultWidth = false),
             modifier = Modifier
                 .padding(horizontal = 40.dp)
