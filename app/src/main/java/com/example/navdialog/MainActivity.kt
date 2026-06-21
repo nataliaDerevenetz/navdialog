@@ -58,7 +58,7 @@ fun AppNavigation() {
 
     NavDisplay(
         backStack = backStack,
-        onBack = { backStack.removeLastOrNull() },
+        onBack = { if (backStack.size > 1) backStack.removeLast() },
         entryProvider = entryProvider {
             entry<AppScreen.Menu> {
                 MenuScreen(
@@ -69,17 +69,17 @@ fun AppNavigation() {
             }
             entry<AppScreen.VariantOne> {
                 VariantOneScreen(
-                    onNavigateBack = { backStack.removeLast() }
+                    onNavigateBack = { if (backStack.size > 1) backStack.removeLast() }
                 )
             }
             entry<AppScreen.VariantTwo> {
                 VariantTwoScreen(
-                    onNavigateBack = { backStack.removeLast() }
+                    onNavigateBack = { if (backStack.size > 1) backStack.removeLast() }
                 )
             }
             entry<AppScreen.VariantThree> {
                 VariantThreeScreen(
-                    onNavigateBack = { backStack.removeLast() }
+                    onNavigateBack = { if (backStack.size > 1) backStack.removeLast() }
                 )
             }
         }
